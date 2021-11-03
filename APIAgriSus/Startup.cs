@@ -51,7 +51,7 @@ namespace APIAgriSus
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "APIAgriSus", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "APIAgriSus", Version = "v1.1u" });
             });
         }
 
