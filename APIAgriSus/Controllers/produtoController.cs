@@ -1,79 +1,99 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using APIAgriSus.Data;
+using APIAgriSus.Models;
+using APIAgriSus.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using APIAgriSus.Models;
-using APIAgriSus.Data;
-using Microsoft.EntityFrameworkCore;
-using APIAgriSus.ViewModels;
 
 namespace APIAgriSus.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class usuarioJuridico : Controller
+    public class produtoController : ControllerBase
     {
-
         [HttpGet]
-        [Route("usuarioJuridico")]
+        [Route("produto")]
         public async Task<IActionResult> GetAsync(
             [FromServices] AppDbContext context)
         {
-            var userJuridico = await context
-                .UserJuridico
+            var produtos = await context
+                .Produto
                 .AsNoTracking()
                 .ToListAsync();
-            return Ok(userJuridico);
+
+
+            foreach(Produto item in produtos)
+            {
+                var agricultor = await context
+                        .Agricultores
+                        .AsNoTracking()
+                        .FirstOrDefaultAsync(x => x.id == item.AgricultorId);
+
+                item.Agricultor = agricultor;
+            }
+
+
+            return Ok(produtos);
         }
+
+
         [HttpGet]
-        [Route("usuarioJuridico/{id}")]
+        [Route("produto/{id}")]
         public async Task<IActionResult> GetByIdAsync(
             [FromServices] AppDbContext context,
             [FromRoute] int id)
         {
-            var userJuridico = await context
-                .UserJuridico
+            var produto = await context
+                .Produto
                 .AsNoTracking()
                 .FirstOrDefaultAsync(x => x.id == id);
 
-            if (userJuridico == null)
+            if (produto == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(userJuridico);
+                var agricultor = await context
+                        .Agricultores
+                        .AsNoTracking()
+                        .FirstOrDefaultAsync(x => x.id == produto.AgricultorId);
+
+                produto.Agricultor = agricultor;
+
+                return Ok(produto);
             }
         }
+
         [HttpPost]
-        [Route("usuarioJuridico")]
+        [Route("produto")]
         public async Task<IActionResult> PostAsync(
             [FromServices] AppDbContext context,
-            [FromBody] UserJuridicoViewModel model)
+            [FromBody] ProdutoViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
 
-            var newuserJuridico = new UserJuridico
+            var newProduto = new Produto
             {
-
                 nome = model.nome,
-                cnpj = model.cnpj,
-                endereco = model.endereco,
-                telefone = model.telefone,
-                senha = model.senha
-
-
+                quantidade = model.quantidade,
+                valor = model.valor,
+                AgricultorId = model.AgricultorId,
+                descricao = model.descricao
             };
 
             try
             {
-                await context.UserJuridico.AddAsync(newuserJuridico);
+                await context.Produto.AddAsync(newProduto);
                 await context.SaveChangesAsync();
-                return Created($"/api/usuarioJuridico/userJuridico/{newuserJuridico.id}", newuserJuridico);
+                return Created($"/api/pequenoAgricultor/agricultor/{newProduto.id}", newProduto);
             }
             catch (Exception e)
             {
@@ -81,12 +101,12 @@ namespace APIAgriSus.Controllers
             }
         }
 
+
         [HttpPut]
-        [Route("userJuridico" +
-            "/{id}")]
+        [Route("produto/{id}")]
         public async Task<IActionResult> PutAsync(
             [FromServices] AppDbContext context,
-            [FromBody] UserJuridicoViewModel model,
+            [FromBody] ProdutoViewModel model,
             [FromRoute] int id)
         {
             if (!ModelState.IsValid)
@@ -94,24 +114,23 @@ namespace APIAgriSus.Controllers
                 return BadRequest();
             }
 
-            var userJuridico = await context.UserJuridico.FirstOrDefaultAsync(x => x.id == id);
+            var produto = await context.Produto.FirstOrDefaultAsync(x => x.id == id);
 
-            if (userJuridico == null)
+            if (produto == null)
             {
                 return NotFound();
             }
 
             try
             {
-                userJuridico.nome = model.nome;
-                userJuridico.endereco = model.endereco;
-                userJuridico.cnpj = model.cnpj;
-                userJuridico.senha = model.senha;
-                userJuridico.telefone = model.telefone;
+                produto.nome = model.nome;
+                produto.valor = model.valor;
+                produto.quantidade = model.quantidade;
+                produto.descricao = model.descricao;
 
-                context.UserJuridico.Update(userJuridico);
+                context.Produto.Update(produto);
                 await context.SaveChangesAsync();
-                return Ok(userJuridico);
+                return Ok(produto);
             }
             catch (Exception e)
             {
@@ -122,21 +141,21 @@ namespace APIAgriSus.Controllers
         }
 
         [HttpDelete]
-        [Route("userJuridico/{id}")]
+        [Route("produto/{id}")]
         public async Task<IActionResult> DeleteAsync(
             [FromServices] AppDbContext context,
             [FromRoute] int id)
         {
-            var userJuridico = await context.UserJuridico.FirstOrDefaultAsync(x => x.id == id);
+            var produto = await context.Produto.FirstOrDefaultAsync(x => x.id == id);
 
-            if (userJuridico == null)
+            if (produto == null)
             {
                 return NotFound();
             }
 
             try
             {
-                context.UserJuridico.Remove(userJuridico);
+                context.Produto.Remove(produto);
                 await context.SaveChangesAsync();
                 return Ok();
             }
@@ -144,6 +163,7 @@ namespace APIAgriSus.Controllers
             {
                 return BadRequest();
             }
+
 
         }
     }

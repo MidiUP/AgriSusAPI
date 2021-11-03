@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\AgriSusAPI\\APIAgriSus\\APIAgriSus.csproj": {}
+    "C:\\Users\\Mateus Mendes\\Documents\\Trabalho Bootcamp\\Backend 2\\AgriSusAPI\\APIAgriSus\\APIAgriSus.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\AgriSusAPI\\APIAgriSus\\APIAgriSus.csproj": {
+    "C:\\Users\\Mateus Mendes\\Documents\\Trabalho Bootcamp\\Backend 2\\AgriSusAPI\\APIAgriSus\\APIAgriSus.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\AgriSusAPI\\APIAgriSus\\APIAgriSus.csproj",
+        "projectUniqueName": "C:\\Users\\Mateus Mendes\\Documents\\Trabalho Bootcamp\\Backend 2\\AgriSusAPI\\APIAgriSus\\APIAgriSus.csproj",
         "projectName": "APIAgriSus",
-        "projectPath": "C:\\Users\\User\\Desktop\\AgriSusAPI\\APIAgriSus\\APIAgriSus.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\AgriSusAPI\\APIAgriSus\\obj\\",
+        "projectPath": "C:\\Users\\Mateus Mendes\\Documents\\Trabalho Bootcamp\\Backend 2\\AgriSusAPI\\APIAgriSus\\APIAgriSus.csproj",
+        "packagesPath": "C:\\Users\\Mateus Mendes\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mateus Mendes\\Documents\\Trabalho Bootcamp\\Backend 2\\AgriSusAPI\\APIAgriSus\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mateus Mendes\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

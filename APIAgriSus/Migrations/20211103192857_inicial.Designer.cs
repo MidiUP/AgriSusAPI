@@ -2,14 +2,16 @@
 using APIAgriSus.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace APIAgriSus.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211103192857_inicial")]
+    partial class inicial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -161,17 +163,12 @@ namespace APIAgriSus.Migrations
             modelBuilder.Entity("APIAgriSus.Models.Produto", b =>
                 {
                     b.HasOne("APIAgriSus.Models.Agricultor", "Agricultor")
-                        .WithMany("Orcamentos")
+                        .WithMany()
                         .HasForeignKey("AgricultorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Agricultor");
-                });
-
-            modelBuilder.Entity("APIAgriSus.Models.Agricultor", b =>
-                {
-                    b.Navigation("Orcamentos");
                 });
 #pragma warning restore 612, 618
         }

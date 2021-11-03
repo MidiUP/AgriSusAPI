@@ -70,6 +70,7 @@ namespace APIAgriSus.Controllers
                 avaliacao = 0,
                 numeroDeAvaliacao = 0,
                 motivacao = model.motivacao,
+                senha = model.senha,
                 imagem = ""
 
             };
@@ -112,6 +113,8 @@ namespace APIAgriSus.Controllers
                 agricultor.cnpj = model.cnpj;
                 agricultor.imagem = model.imagem;
                 agricultor.motivacao = model.motivacao;
+                agricultor.senha = model.senha;
+                agricultor.telefone = model.telefone;
 
                 context.Agricultores.Update(agricultor);
                 await context.SaveChangesAsync();

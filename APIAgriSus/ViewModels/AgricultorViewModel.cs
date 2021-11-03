@@ -23,6 +23,9 @@ namespace APIAgriSus.ViewModels
         [Required]
         public string motivacao { get; set; }
 
+        [Required]
+        public string senha { get; set; }
+
         public string imagem { get; set; }
     }
 }

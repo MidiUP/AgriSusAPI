@@ -57,22 +57,23 @@ namespace APIAgriSus.Controllers
                 return BadRequest();
             }
 
-            var newuserfisico = new Userfisico
+            var newUserFisico = new Userfisico();
             {
 
-                nomeuser = model.nomeuser,
-                cpf = model.cpf,
-                endereco = model.endereco,
-                telefone = model.telefone
-                
+                newUserFisico.nome = model.nome;
+                newUserFisico.cpf = model.cpf;
+                newUserFisico.endereco = model.endereco;
+                newUserFisico.telefone = model.telefone;
+                newUserFisico.senha = model.senha;
+
 
             };
 
             try
             {
-                await context.Userfisico.AddAsync(newuserfisico);
+                await context.Userfisico.AddAsync(newUserFisico);
                 await context.SaveChangesAsync();
-                return Created($"/api/usuarioFisico/userfisico/{newuserfisico.id}", newuserfisico);
+                return Created($"/api/usuarioFisico/userfisico/{newUserFisico.id}", newUserFisico);
             }
             catch (Exception e)
             {
@@ -101,9 +102,12 @@ namespace APIAgriSus.Controllers
 
             try
             {
-                userfisico.nomeuser = model.nomeuser;
+                userfisico.nome = model.nome;
                 userfisico.endereco = model.endereco;
                 userfisico.cpf = model.cpf;
+                userfisico.telefone = model.telefone;
+                userfisico.senha = model.senha;
+
                 context.Userfisico.Update(userfisico);
                 await context.SaveChangesAsync();
                 return Ok(userfisico);

@@ -6,17 +6,25 @@ using System.Threading.Tasks;
 
 namespace APIAgriSus.ViewModels
 {
-    public class userfisicoViewModel
+    public class ProdutoViewModel
     {
+
+
+        [Required]
+        public int AgricultorId { get; set; }
+
         [Required]
         public string nome { get; set; }
+
         [Required]
-        public string cpf { get; set; }
+        public double quantidade { get; set; }
+
         [Required]
-        public string endereco { get; set; }
+        public double valor { get; set; }
+
         [Required]
-        public string telefone { get; set; }
-        [Required]
-        public string senha { get; set; }
+        public string descricao { get; set; }
+
     }
 }
+

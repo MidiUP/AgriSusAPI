@@ -6,16 +6,11 @@ using System.Threading.Tasks;
 
 namespace APIAgriSus.ViewModels
 {
-    public class userfisicoViewModel
+    public class LoginViewModel
     {
         [Required]
-        public string nome { get; set; }
-        [Required]
-        public string cpf { get; set; }
-        [Required]
-        public string endereco { get; set; }
-        [Required]
-        public string telefone { get; set; }
+        public string login { get; set; }
+
         [Required]
         public string senha { get; set; }
     }

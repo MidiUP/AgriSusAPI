@@ -9,12 +9,14 @@ namespace APIAgriSus.ViewModels
     public class UserJuridicoViewModel
     {
         [Required]
-        public string nomeUser { get; set; }
+        public string nome { get; set; }
         [Required]
         public string cnpj{ get; set; }
         [Required]
         public string endereco { get; set; }
         [Required]
         public string telefone { get; set; }
+        [Required]
+        public string senha { get; set; }
     }
 }
