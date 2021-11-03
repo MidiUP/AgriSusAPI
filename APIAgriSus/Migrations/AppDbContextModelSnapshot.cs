@@ -72,6 +72,8 @@ namespace APIAgriSus.Migrations
                     b.HasKey("id");
 
                     b.ToTable("UserFisco");
+
+                    b.ToTable("UserJuridico");
                 });
 #pragma warning restore 612, 618
         }

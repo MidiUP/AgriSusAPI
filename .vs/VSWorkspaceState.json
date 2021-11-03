@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\APIAgriSus",
+    "\\APIAgriSus\\bin\\Debug\\net5.0",
+    "\\APIAgriSus\\bin\\Release\\net5.0\\ref",
+    "\\APIAgriSus\\Controllers",
+    "\\APIAgriSus\\Data",
+    "\\APIAgriSus\\Migrations",
+    "\\APIAgriSus\\Models",
+    "\\APIAgriSus\\ViewModels"
+  ],
+  "SelectedNode": "\\APIAgriSus\\Models\\userJuridico.model",
+  "PreviewInSolutionExplorer": false
+}

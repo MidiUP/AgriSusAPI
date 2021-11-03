@@ -16,6 +16,7 @@ namespace APIAgriSus.Data
 
         public DbSet<Agricultor> Agricultores { get; set; }
         public DbSet<Userfisico> Userfisico { get; set; }
+        public DbSet<UserJuridico> UserJuridico { get; set; }
 
     }
 }
